@@ -9,36 +9,19 @@ import spiderMan from '../../assets/images/banner-homem-aranha.png'
 import { Items, Item, Action, Modal, ModalContent } from './styles'
 import { useState } from 'react'
 
-interface GalleryItem {
-  type: 'image' | 'video'
-  url: string
-}
-
-const mock: GalleryItem[] = [
-  {
-    type: 'image',
-    url: zeldaImg
-  },
-  {
-    type: 'image',
-    url: residentImg
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/uHGShqcAHlQ?si=xL3ZwmtJVjOeIuxj'
-  }
-]
+import { GalleryItem } from '../../pages/Home'
 
 type Props = {
   defaultCover: string
   name: string
+  items: GalleryItem[]
 }
 
 interface ModalState extends GalleryItem {
   isVisible: boolean
 }
 
-const Gallery = ({ defaultCover, name }: Props) => {
+const Gallery = ({ defaultCover, name, items }: Props) => {
   const [modal, setModal] = useState<ModalState>({
     isVisible: false,
     type: 'image',
@@ -67,7 +50,7 @@ const Gallery = ({ defaultCover, name }: Props) => {
     <>
       <Section title="Galeria" background="black">
         <Items>
-          {mock.map((media, index) => (
+          {items.map((media, index) => (
             <Item
               key={media.url}
               onClick={() => {
