@@ -10,6 +10,7 @@ import { Items, Item, Action, Modal, ModalContent } from './styles'
 import { useState } from 'react'
 
 import { GalleryItem } from '../../pages/Home'
+import { CSSTransition } from 'react-transition-group'
 
 type Props = {
   defaultCover: string
